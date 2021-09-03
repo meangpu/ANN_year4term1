@@ -36,12 +36,13 @@ print(f"MAE = {metrics.mean_absolute_error(y_test, y_predict)}")
 print(f"MSE = {metrics.mean_squared_error(y_test, y_predict)}")
 print(f"RMSE = {np.sqrt(metrics.mean_absolute_error(y_test, y_predict))}")
 print(f"Score(accuracy%) = {metrics.r2_score(y_test, y_predict) * 100}%")
+
 # graph data error
-# print(dataFrame.head())
-# dataFrame1 = dataFrame.head(20)  # first 20 data
-# dataFrame1.plot(kind="bar", figsize=(16, 10))
-# plt.grid()
-# plt.show()
+print(dataFrame.head())
+dataFrame1 = dataFrame.head(20)  # first 20 data
+dataFrame1.plot(kind="bar", figsize=(16, 10))
+plt.grid()
+plt.show()
 
 
 def describe_data_set():
