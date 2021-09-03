@@ -6,7 +6,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn import metrics
 
 # จำลองข้อมูล  https://www.kaggle.com/akpmpr/updated-netflix-stock-price-all-time
-dataset = pd.read_csv("https://www.kaggle.com/akpmpr/updated-netflix-stock-price-all-time?select=netflix.csv")
+dataset = pd.read_csv("https://raw.githubusercontent.com/meangpu/ANN_year4term1/main/Assignment_1/mainData/netflix.csv")
 print(dataset.shape)
 # linear regression model
 
