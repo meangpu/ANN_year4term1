@@ -4,14 +4,19 @@ from sklearn.linear_model import LinearRegression
 rng = np.random
 
 #  จำลองข้อมูล
-x = np.random.rand(100)*10
-c = rng.randn(100)  # randn is Negative or positive // rand is only positive
+x = np.random.rand(20)*10
+c = rng.randn(20)  # randn is Negative or positive // rand is only positive
 y = 2 * x + c
 
 # linear regression model
 model = LinearRegression()
 
 x_new = x.reshape(-1, 1)
+print(x)
+print("\n\n\n")
+print(x_new)
+
+
 
 # train
 model.fit(x_new, y)
