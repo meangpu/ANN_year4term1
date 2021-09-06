@@ -19,9 +19,9 @@ def grad(u):
 
 
 if __name__ == "__main__":
-    # diff()
-    us = np.linspace(-1, 0, num=5)  # [-1.   -0.75 -0.5  -0.25  0.  ] 5 number from -1 to 0
+    diff()
+    # us = np.linspace(-1, 0, num=5)  # [-1.   -0.75 -0.5  -0.25  0.  ] 5 number from -1 to 0
     # print(us)
-    print(loss(us))
-    print(grad(us))
+    # print(loss(us))
+    # print(grad(us))
 
