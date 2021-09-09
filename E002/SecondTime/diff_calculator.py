@@ -12,7 +12,7 @@ def diff():
 def diff2var():
     x = sp.symbols("x")
     y = sp.symbols("y")
-    main_equa = x**2 + 1.5*x*y - 16*x + 2*(y**2) - 35*y
+    main_equa = (x**2) + (1.5*x*y) - 16*x + 2*(y**2) - 35*y
     diff_x = sp.diff(main_equa, x)
     diff_y = sp.diff(main_equa, y)
     print(diff_x)
@@ -24,5 +24,5 @@ def main_ans(u):
 
 
 if __name__ == "__main__":
-    diff()
-    # diff2var()
+    # diff()
+    diff2var()

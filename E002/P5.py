@@ -19,12 +19,12 @@ def g2min(u0, lr, N):
     return u_now
 
 
-def diff_u1(u_array):
+def diff_u1(u_array):  # -- อันนี้ให้เป็น U
     ans = 2*u_array[0][0] + 1.5*u_array[1][0] - 16
     return [ans]
 
 
-def diff_u2(u_array):
+def diff_u2(u_array):  # -- อันนี้ให้เป็น A
     ans = 1.5*u_array[0][0] + 4*u_array[1][0] - 35
     return [ans]
 
