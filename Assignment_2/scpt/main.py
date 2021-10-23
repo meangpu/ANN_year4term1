@@ -12,21 +12,22 @@ import itertools
 from sklearn.model_selection import cross_val_score
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import cross_val_predict
+from sklearn.metrics import classification_report
 
 
-def displayConfusionMatrix(cm,cmap=plt.cm.GnBu):
+def displayConfusionMatrix(cm, cmap=plt.cm.GnBu):
     classes = ["Other Number", "Number 0"]
     plt.imshow(cm, interpolation='nearest', cmap=cmap)
     plt.title("Confusion Matrix")
     plt.colorbar()
-    trick_marks=np.arange(len(classes))
-    plt.xticks(trick_marks,classes)
-    plt.yticks(trick_marks,classes)
-    thresh=cm.max()/2
-    for i , j in itertools.product(range(cm.shape[0]),range(cm.shape[1])):
-        plt.text(j,i,format(cm[i,j],'d'),
-        horizontalalignment='center',
-        color='white' if cm[i, j] > thresh else 'black')
+    trick_marks = np.arange(len(classes))
+    plt.xticks(trick_marks, classes)
+    plt.yticks(trick_marks, classes)
+    thresh = cm.max() / 2
+    for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
+        plt.text(j, i, format(cm[i, j], 'd'),
+                 horizontalalignment='center',
+                 color='white' if cm[i, j] > thresh else 'black')
 
     plt.tight_layout()
     plt.ylabel('Actually')
@@ -72,23 +73,24 @@ y_test_0 = (y_test == 0)  # หาค่าทั้งหมดใน y_test �
 y_train_5 = (y_train == 5)  # หาค่าทั้งหมดใน y ถ้าเป็น 0 ก็จะเอาออกมา 60000
 y_test_5 = (y_test == 5)  # หาค่าทั้งหมดใน y_test ถ้าเป็น 0 ก็จะเอาออกมา 10000
 
-
 sgd_clf = SGDClassifier()
 
 # อันนี้จะแยกข้อมูลออกเป็น 2 กลุ่มเลยคือ ใช่ 0 กะไม่ใช่ 0
 sgd_clf.fit(x_train, y_train_0)  # train data x with outcome y that only have 0
-
 
 # score = cross_val_score(sgd_clf, x_train, y_train_0, cv=3, scoring="accuracy")  # cv คือ ทดลองกี่ครั้ง
 # print(score)
 
 y_train_predict = cross_val_predict(sgd_clf, x_train, y_train_0, cv=10)
 cm = confusion_matrix(y_train_0, y_train_predict)
-plt.figure()
-displayConfusionMatrix(cm)
+
+y_test_predict = sgd_clf.predict(x_test)
+
+classes = ["Other number", "Number 0"]
+print(classification_report(y_test_0, y_test_predict, target_names=classes))
+
+# plt.figure()
+# displayConfusionMatrix(cm)
 
 # display_predict(sgd_clf, y_test_0[predict_number], x_test[predict_number])
 # display_image(x_test[predict_number])
-
-
-
