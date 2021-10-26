@@ -81,16 +81,16 @@ sgd_clf.fit(x_train, y_train_0)  # train data x with outcome y that only have 0
 # score = cross_val_score(sgd_clf, x_train, y_train_0, cv=3, scoring="accuracy")  # cv คือ ทดลองกี่ครั้ง
 # print(score)
 
-y_train_predict = cross_val_predict(sgd_clf, x_train, y_train_0, cv=10)
+y_train_predict = cross_val_predict(sgd_clf, x_train, y_train_0, cv=2)
 cm = confusion_matrix(y_train_0, y_train_predict)
 
 y_test_predict = sgd_clf.predict(x_test)
 
-classes = ["Other number", "Number 0"]
-print(classification_report(y_test_0, y_test_predict, target_names=classes))
+# classes = ["Other number", "Number 0"]
+# print(classification_report(y_test_0, y_test_predict, target_names=classes))
 
-# plt.figure()
-# displayConfusionMatrix(cm)
+plt.figure()
+displayConfusionMatrix(cm)
 
 # display_predict(sgd_clf, y_test_0[predict_number], x_test[predict_number])
 # display_image(x_test[predict_number])
