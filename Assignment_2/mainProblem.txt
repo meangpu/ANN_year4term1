@@ -1,0 +1,30 @@
+Assignment 2: Two-layer MLP on hand-written digits
+
+
+Main goal is to study effects of #HUs and training variables, i.e., lr and #epochs on final performance.
+Use sigmoid as activation function for HUs.
+Train it with regular gradient descend method.
+(We want to lay a solid foundation.)
+Each treatment repeats at least 10 times to see the variation due to random initialization.
+
+Dataset: MNIST
+
+
+* Due Oct 31st (Sun), 2021
+
+* Submissible: a report (pdf)
+** Title, Name and student ids
+** Introduction/overview and main goal
+** Methodology
+*** Model and Hyperparameters
+*** Results
+** Discussion
+** Conclusion
+
+
+Grading on 
+* its completeness (7), 
+* correctness (3),
+* statistics (5), ?? tentative, I'll see if it takes too much time?
+* readability (5), 
+* and overall being (5).
