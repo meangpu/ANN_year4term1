@@ -64,10 +64,15 @@ def train_mlp2(c, v, b, w, X, Y, lr1, lr2, nepochs,
 
       losses.append(lossi)
 
-      c -= dLc * lr2
+      c -= dLc * lr2 
       v -= dLv * lr2
       b -= dLb * lr1
       w -= dLw * lr1
+
+      if i % 10 == 0:  # every 10 iter
+        print(f"Iteration: {i}")
+        print(f"Accuracy: {lossi}")
+
 
       if disp:
         if i % 5000 == 0:
@@ -106,7 +111,6 @@ def train_mlp2(c, v, b, w, X, Y, lr1, lr2, nepochs,
 
 
 def cross_entropy(x, y, yp):
-    
     return np.sum(-np.log(yp[y == 1]))+np.sum(-np.log(1-yp[y == 0]))
 
 
