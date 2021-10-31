@@ -81,10 +81,10 @@ def train_mlp2(c, v, b, w, X, Y, lr1, lr2, nepochs, oldY,
       b -= dLb * lr1
       w -= dLw * lr1
 
-      if i % 20 == 0:
-        print(f"Iteration: {i}")
-        print(f"New Accuracy: {get_accuracy(get_predict(yhat), oldY)*100:.2f}%")
-        print("======================================================")
+      # if i % 100 == 0:
+      #   print(f"Iteration: {i}")
+      #   print(f"New Accuracy: {get_accuracy(get_predict(yhat), oldY)*100:.2f}%")
+      #   print("======================================================")
 
 
 
