@@ -32,3 +32,18 @@ Grading on
 * statistics (5), ?? tentative, I'll see if it takes too much time?
 * readability (5), 
 * and overall being (5).
+
+
+
+
+
+***** ownmodel 
+***** test model
+
+
+
+*6 คือเลขที่ดีที่สุด  learning rate
+
+average from multiple run
+
+LR = HU*2 ?

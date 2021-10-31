@@ -1,0 +1,40 @@
+Comments on Assignment 1
+
+I have been grading some of your reports on Assignment 1.
+They all seem pretty good.
+
+However, there are a few points I want to address to all:
+1. As we have discussed in Generalization, DO NOT use training data to evaluate model.
+This is serious. It's not just learning the theory, but we should keep practice to be our habit.
+I may spot on some of the reports. If there are reports mis-practice this, please correct it in your practice. (You don't have to re-submit it. As long as you learn, it's good enough.)
+
+
+2. "Hyperparameter" is referred to something different than "parameter"
+E.g., Degree-5 Polynomial
+* hyperparameter is the degree and it is 5
+* parameters are w0, w1, w2, w3, w4, and w5.
+Two-layer MLP with 8 HUs
+
+* hyperparameter is the number of HUs, 8 in this case.
+* (supposed dim(x) = 2) parameters w11, w12, w21, w22, w31, w32, ..., w81, w82, b1, b2, ..., b8, v1, v2, ... v8, c.
+
+
+3. When reporting the evaluation result, use the specific term for the performance metric
+E.g., use terms like SSE, MSE, MAE, R-Square, accuracy, etc. Do not use term "loss". Loss is for training and it may contain other misleading factors, e.g., weight decays.
+
+
+
+4. Model and loss are different concepts
+Model is what we offer---the predictor: yp = f(x).
+Loss is the goal we use in the training process: MSE loss = 0.5 sum (yp - y)^2
+
+5. Lay a big picture in the beginning and wrap with the main points in the conclusion
+
+
+6. Try to practice technical arguments on the discussion
+
+
+
+
+
+PS I have not graded yours, but this comments might be useful for A2.

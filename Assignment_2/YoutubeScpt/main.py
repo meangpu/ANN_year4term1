@@ -45,7 +45,7 @@ def display_predict(clf, actually_y, x_value):
     print(f"Prediction = {clf.predict([x_value])[0]}")
 
 
-mnist_raw = loadmat("../data/mnist-original.mat")
+mnist_raw = loadmat("data/mnist-original.mat")
 # data มีข้อมูล 70000 ชุด และขนาด 784 (28*28 Pixel)
 # target มีข้อมูล 70000 ชุด เป็นเลข 0-9 คือคำตอบของข้อมูล
 mnist = {"data": mnist_raw["data"].T, "target": mnist_raw["label"][0]}

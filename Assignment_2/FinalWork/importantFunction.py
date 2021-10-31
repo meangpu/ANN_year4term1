@@ -1,33 +1,41 @@
 import numpy as np
 
 def sigmoid(a):
-    h = 1/(1 + np.exp(-a))
-    return h
+  h = 1/(1 + np.exp(-a))
+  return h
 
 def identity(a):
-    return a
+  return a
+
+def get_predict(A2):
+    A2 = A2.T
+    return np.argmax(A2, 0)
+
+def get_accuracy(predictions, Y):
+  return np.sum(predictions == Y) / Y.size
+   
 
 def mlp2(c, v, b, w, X, oact=identity):
+  a = b.T + np.dot(X, w.T)            # a: array N x M
+  z = sigmoid(a)                      # z: array N x M
 
-    a = b.T + np.dot(X, w.T)            # a: array N x M
-    z = sigmoid(a)                      # z: array N x M
+  a2 = c.T + np.dot(z, v.T)           # a2: array N x K
+  yhat = oact(a2)                     # yhat: array N x K
 
-    a2 = c.T + np.dot(z, v.T)           # a2: array N x K
-    yhat = oact(a2)                     # yhat: array N x K
-
-    return yhat
+  return yhat
 
 def mse_loss(x, y, yp):
+  return np.mean((yp - y)**2)
 
-    return np.mean((yp - y)**2)
 
-def train_mlp2(c, v, b, w, X, Y, lr1, lr2, nepochs, 
+def train_mlp2(c, v, b, w, X, Y, lr1, lr2, nepochs, oldY, 
                oact=identity, loss=mse_loss, disp=False, 
                val=None, val_criteria=1):
-
   N, D = X.shape
 
+
   losses = []
+  accuracy_list = []
 
   # For early stopping
   
@@ -45,6 +53,7 @@ def train_mlp2(c, v, b, w, X, Y, lr1, lr2, nepochs,
       a2 = c.T + np.dot(z, v.T)           # a2: array N x K
       z2 = oact(a2)                       # z2: array N x K
       yhat = z2                           # yhat: array N x K
+
 
       # Backward pass
       delta2 = yhat - Y                   # delta2: array N x K
@@ -64,14 +73,20 @@ def train_mlp2(c, v, b, w, X, Y, lr1, lr2, nepochs,
 
       losses.append(lossi)
 
+
+      accuracy_list.append(get_accuracy(get_predict(yhat), oldY))
+
       c -= dLc * lr2 
       v -= dLv * lr2
       b -= dLb * lr1
       w -= dLw * lr1
 
-      if i % 10 == 0:  # every 10 iter
+      if i % 20 == 0:
         print(f"Iteration: {i}")
-        print(f"Accuracy: {lossi}")
+        print(f"New Accuracy: {get_accuracy(get_predict(yhat), oldY)*100:.2f}%")
+        print("======================================================")
+
+
 
 
       if disp:
@@ -107,7 +122,7 @@ def train_mlp2(c, v, b, w, X, Y, lr1, lr2, nepochs,
 
   # end for i
 
-  return c, v, b, w, losses
+  return c, v, b, w, losses, accuracy_list
 
 
 def cross_entropy(x, y, yp):
