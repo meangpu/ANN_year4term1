@@ -43,6 +43,8 @@ def train_mlp2(c, v, b, w, X, Y, lr1, lr2, nepochs, oldY,
   best_params = (c, v, b, w)
   val_count = 0
 
+  
+
 
   # Learning
   for i in range(nepochs):
@@ -52,7 +54,9 @@ def train_mlp2(c, v, b, w, X, Y, lr1, lr2, nepochs, oldY,
       z = sigmoid(a)                      # z: array N x M
       a2 = c.T + np.dot(z, v.T)           # a2: array N x K
       z2 = oact(a2)                       # z2: array N x K
-      yhat = z2                           # yhat: array N x K
+      yhat = z2                           # yhat: array N x K  
+
+      # yhat = จำนวนข้อมูล * ผลลัพ -- 6000 * 10 แบบ oneHot
 
 
       # Backward pass
@@ -72,6 +76,9 @@ def train_mlp2(c, v, b, w, X, Y, lr1, lr2, nepochs, oldY,
           break
 
       losses.append(lossi)
+
+      print("AAA")
+      print(get_predict(yhat).shape)
 
 
       accuracy_list.append(get_accuracy(get_predict(yhat), oldY))

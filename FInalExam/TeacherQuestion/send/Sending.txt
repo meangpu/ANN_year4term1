@@ -1,0 +1,20 @@
+Announcement: "ทบทวนวิธีส่ง ในรูป * ถ้าดู submission…"
+Tatpong Katanyukul
+Created 2:14 PM2:14 PM (Edited 2:18 PM)
+ทบทวนวิธีส่ง
+
+
+ในรูป
+* ถ้าดู submission files แล้วเห็นมี folder อยู่ ให้รู้เลยว่า ตรวจไม่ได้ (grader หาไฟล์ไม่เจอ)
+
+สำหรับ คนใช้ Mac
+สมมติ ไฟล์อยู่ใน folder 'Goody'
+
+> cd Goody
+> tar -cf g.tar *
+
+แล้วเอา g.tar ขึ้นส่ง
+(อาจลอง extract g.tar ออกมาดูว่า ไม่มี folder ซ้อนอยู่ใน .tar)
+
+
+* verify.json ต้องเขียนให้สมบูรณ์
